@@ -17,9 +17,9 @@ $("#submit").click(function(e){
     }); 
   $("#desk").change(function(e){ 
         e.preventDefault(); 
-        ajax_search2(); 
+        ajax_search_team(); 
     }); 
-  $("#search_results2").change(function(e){ 
+  $("#team").change(function(e){ 
         e.preventDefault(); 
         ajax_search3(); 
     }); 
@@ -72,7 +72,7 @@ function ajax_search_desk(){
 
 
 
-function ajax_search2(){
+function ajax_search_team(){
   
  var search_status2 = $('#desk').val();
    $.ajax({
@@ -85,10 +85,10 @@ function ajax_search2(){
    },
   
    success: function(html){
-      $("#search_results2").html(html);
+      $("#team").html(html);
     },
     error: function (error) {
-    $("#search_results2").html(error);
+    $("#team").html(error);
 }
  });
 }
@@ -135,7 +135,7 @@ function ajax_search3(){
          </select>
     <hr>
     <label>Team:</label>
-          <select name="search_results2" id="search_results2" placeholder="Team1" onchange="change(this.value, this.name)">
+          <select name="team" id="team" onchange="change(this.value, this.name)">
                 
                      
          </select>

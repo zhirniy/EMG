@@ -26,7 +26,7 @@ class Model extends DB
     {
         $dbn = new DB();
         $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE id='.$id);
-        $res="";
+        $res='<option  value="" disabled selected>Desk option</option>';
         while ($desk = $sql->fetch_object()){
             $res.='<option  value="'.$desk->desk_name.'">'.$desk->desk_name.'</option>';
            
