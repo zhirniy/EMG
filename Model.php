@@ -5,7 +5,7 @@ use EMG\DB;
 class Model extends DB
 {
     protected $dbn;
-
+    //Функция получение и вывода списка Call center
      public static function data($table)
     {
         $dbn = new DB();
@@ -20,7 +20,7 @@ class Model extends DB
     
     }
 
-
+    //Функция получение и вывода списка Desc
         public static function data_desks($table, $id)
     {
         $dbn = new DB();
@@ -35,7 +35,7 @@ class Model extends DB
     
     }
 
-
+  //Функция получение и вывода списка Team
     public static function data_teams($table, $id)
     {
         $dbn = new DB();
@@ -48,7 +48,7 @@ class Model extends DB
         return $res;
      }
 
-
+    //Функция получение и вывода списка Sales
 
          public static function data_users($table, $id)
     {

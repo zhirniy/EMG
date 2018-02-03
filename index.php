@@ -2,18 +2,18 @@
   <head>
     <title>Тестовое задание</title>
     <!-- Подключаем стили и библиотеку jqwery -->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
    <!-- Подключаем js файл -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 
   </head>
   <body>
   <div id="content">
   <h2 align="center">Assignment</h2>
   <hr> 
-      <!-- Форма олучения данных -->
+      <!-- Форма получения данных -->
       <form  method="post" enctype="multipart/form-data">
       <!-- Поле Call center -->
       <p>
