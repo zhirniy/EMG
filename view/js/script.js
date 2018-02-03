@@ -50,7 +50,7 @@ function ajax_search(post_name, post_value, place){
   
 
    $.ajax({
-   url: "search.php",
+   url: "../EMG/search.php",
    type: "POST",
    dataType: 'json',
    data:
