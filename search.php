@@ -1,7 +1,7 @@
 <?php
 namespace EMG;
 
-require_once "Model.php";
+require_once "Model\Model.php";
 
 //Данные из формы записываем в переменные
 $call_center_all = $_POST['call_center_all'];

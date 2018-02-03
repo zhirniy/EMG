@@ -1,6 +1,6 @@
 <?php 
 namespace EMG;
-require_once "DB.php";
+require_once "Model\DB.php";
 use EMG\DB;
 class Model extends DB
 {
