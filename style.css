@@ -1,0 +1,35 @@
+/*Стили тегов*/
+label{
+	font-size: 20px;
+	}
+select{
+	height:30px;
+	float:right;
+	width:150px;
+	font-size: 15px;
+	background-color: whitesmoke;
+	border-radius:5px;
+}
+/*Стили id*/
+#submit, #reset{
+	float:right;
+	font-size: 20px;
+	margin:5px;
+	border-radius:5px;
+	width: 80px;
+}
+
+#submit{
+	background-color: green;
+	color:white;
+	border: solid 2px green;
+}
+#save{
+	font-size: 20px;
+}
+
+#content{
+    margin-top:2%;
+    margin-left:40%;
+	width: 20%;
+}
