@@ -6,115 +6,68 @@
    <script>
 
 $(document).ready(function(){
-call_center_data();
+  
+ajax_search("call_center_all", 1 ,"#call_center");
 $("#submit").click(function(e){ 
         e.preventDefault(); 
-        call_center_data(); 
+        save(); 
     }); 
  $("#call_center").change(function(e){ 
         e.preventDefault(); 
-        ajax_search_desk(); 
+        ajax_search("call_center", "#call_center" ,"#desk"); 
     }); 
   $("#desk").change(function(e){ 
         e.preventDefault(); 
-        ajax_search_team(); 
+        ajax_search("desk", "#desk", "#team"); 
     }); 
   $("#team").change(function(e){ 
         e.preventDefault(); 
-        ajax_search3(); 
-    }); 
+        ajax_search("team", "#team", "#sales"); 
+    });
+  });
 
-});
 
+function ajax_search(post_name, post_value, place){
+   var data_var = {};
+   if(post_name == 'call_center_all'){
+   data_var[post_name] = post_value;
+   }
+   else {
+     data_var[post_name] = $(post_value).val();
+   }
+  
 
-function call_center_data(){
    $.ajax({
    url: "customer.php",
    type: "POST",
    dataType: 'json',
-   data: {
-          call_center_all : 1
-   },
-
+   data:
+   data_var,
    success: function(html){
-      $("#call_center").html(html);
-    },
+      $(place).html(html);
+      },
     error: function (error) {
-    $("#call_center").html(error);
+       $(place).html(error);
 }
  });
+   
+}
 
+function save(){
+   var call = $("#call_center").val();
+   var desk = $("#desk").val();
+   var team = $("#team").val();
+   var sales = $("#sales").val();
+   if(call !== null && desk !== null && team !==null && sales !== null){
+  $("#save").html("Saved!");
+} else{
+  $("#save").html("Not saved! Fill in all the fields!");
+   }
 }
 
 
-
-function ajax_search_desk(){
-   var search_status = $('#call_center').val();
-   $.ajax({
-   url: "customer.php",
-   type: "POST",
-   dataType: 'json',
-   data: {
-            
-            call_center : search_status
-   },
-  
-   success: function(html){
-      $("#desk").html(html);
-    },
-    error: function (error) {
-    $("#desk").html(error);
-}
- });
-
-
-}
-
-
-
-function ajax_search_team(){
-  
- var search_status2 = $('#desk').val();
-   $.ajax({
-   url: "customer.php",
-   type: "POST",
-   dataType: 'json',
-   data: {
-            
-        call_center2 : search_status2
-   },
-  
-   success: function(html){
-      $("#team").html(html);
-    },
-    error: function (error) {
-    $("#team").html(error);
-}
- });
-}
-
-
-
-function ajax_search3(){
-  
- var search_status3 = $('#search_results2').val();
-   $.ajax({
-   url: "customer.php",
-   type: "POST",
-   dataType: 'json',
-   data: {
-          call_center3 : search_status3
-   },
-  
-   success: function(html){
-      $("#search_results3").html(html);
-    },
-    error: function (error) {
-    $("#search_results3").html(error);
-}
- });
-
-}
+  //document.getElementById('save').innerHTML = "Нет подключения!"; 
+ // alert("Нет подключения!");
 
 
 
@@ -126,29 +79,32 @@ function ajax_search3(){
  
     <label>Call center:</label>
           <select name="call_center" id="call_center" onchange="change(this.value, this.name)">
-                     
+          <option  value="" disabled selected>Call center</option>         
          </select>
      <hr>     
     <label>Desk:</label>
          <select name="desk" id="desk" onchange="change(this.value, this.name)">
+         <option  value="" disabled selected>Desk option</option>
                     
          </select>
     <hr>
     <label>Team:</label>
           <select name="team" id="team" onchange="change(this.value, this.name)">
+          <option  value="" disabled selected>Team option</option>
                 
                      
          </select>
     <hr>
     <label>Sales:</label>
-          <select name="search_results3" id="search_results3" placeholder="Mary" onchange="change(this.value, this.name)">
+          <select name="sales" id="sales" onchange="change(this.value, this.name)">
+          <option  value="" disabled selected>Sales option</option>
                                       
          </select>
     <hr>
     <input id="reset" type="reset" name="reset" value="Close">
   	<input id="submit" type="submit" name="submit" value="Save">
   </form>
- <p id="dd">Выберите пользователя</p>
+ <p id="save"></p>
   <?php //include 'customer.php'; ?>
 
   </body>
