@@ -10,6 +10,7 @@ select{
 	background-color: whitesmoke;
 	border-radius:5px;
 }
+
 /*Стили id*/
 #submit, #reset{
 	float:right;
@@ -28,8 +29,3 @@ select{
 	font-size: 20px;
 }
 
-#content{
-    margin-top:2%;
-    margin-left:40%;
-	width: 20%;
-}
