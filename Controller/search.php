@@ -36,6 +36,4 @@ $cc_users = $db->data_users('cc_users', $team);
 echo json_encode($cc_users);
 }
 
-
-
 ?>

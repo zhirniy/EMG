@@ -1,6 +1,6 @@
 <?php
 namespace EMG;
-//Класс соединения с базой данных
+ //Класс соединения с базой данных
 class DB
 {
 protected $dbn;	
