@@ -63,7 +63,7 @@
           </div>     
         </div>
       </div>   
-       <!-- Поле Team -->
+      <!-- Поле Team -->
       <div class="row"> 
         <div class="col-md-3"></div>
         <div class="col-md-6"> 
