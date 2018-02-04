@@ -6,14 +6,20 @@ class DB
 protected $dbn;	
 public function __construct()
   {
-     $this->dbn = mysqli_connect("localhost", "root", "12345678", "test_db") or die ("Невозможно подключиться к БД");
+     $this->dbn = new \PDO('mysql:host=localhost; dbname=test_db', 'root', '12345678');
    }
 
 
-   public function query($params)
+   public function query($params, $id)
    {
-
-   	 return mysqli_query($this->dbn, $params);
+    //Подготавливаем и делаем запрос к базе данных
+   	 $stmt = $this->dbn->prepare($params);
+    if($id!==null){
+    $stmt->execute(array('id' => $id));}
+    else{
+    $stmt->execute();  
+    }
+    return $stmt;
   }
 
 }

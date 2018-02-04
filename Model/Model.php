@@ -1,63 +1,75 @@
 <?php 
 namespace EMG;
 require_once "Model\DB.php";
-use EMG\DB;
+
 class Model extends DB
 {
     protected $dbn;
     //Функция получение и вывода списка Call center
-     public static function data($table)
+         public static function data($table)
     {
+       //Подключаемся к базе данных и делаем выборку значений. Полученный результат записываем в переменную $res
+      //и передаём переменную в seqrch.php
         $dbn = new DB();
-        $sql = $dbn->query('SELECT * FROM '.$table);
+        $sql = $dbn->query('SELECT * FROM '.$table, null);
         $res='<option  value="" disabled selected>Call center</option>';
-        while ($call_center= $sql->fetch_object()){
-            $res.='<option  value="'.$call_center->id.'">'.$call_center->name.'</option>';
-
+        if($sql){
+               foreach ($sql as $call_center){
+                $res.='<option  value="'.$call_center['id'].'">'.$call_center['name'].'</option>';
+               }
         }
+
         return $res;
-        
+      
     
     }
 
     //Функция получение и вывода списка Desc
+     //Подключаемся к базе данных и делаем выборку значений. Полученный результат записываем в переменную $res
+    //и передаём переменную в seqrch.php
         public static function data_desks($table, $id)
     {
-        $dbn = new DB();
-        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE id_callcenter='.$id);
         $res='<option  value="" disabled selected>Desk option</option>';
-        while ($desk = $sql->fetch_object()){
-            $res.='<option  value="'.$desk->id_callcenter.'">'.$desk->desk_name.'</option>';
-           
+        $dbn = new DB();
+        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE id_callcenter=:id', $id);
+        if($sql){
+               foreach ($sql as $desk){
+                   $res.='<option  value="'.$desk['id_callcenter'].'">'.$desk['desk_name'].'</option>';
+           }
         }
         return $res;
-        
-    
+  
     }
 
   //Функция получение и вывода списка Team
+  //Подключаемся к базе данных и делаем выборку значений. Полученный результат записываем в переменную $res
+  //и передаём переменную в seqrch.php
     public static function data_teams($table, $id)
     {
-        $dbn = new DB();
-        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE id_desk='.$id);
         $res='<option  value="" disabled selected>Team option</option>';
-        while ($teams = $sql->fetch_object()){
-            $res.='<option  value="'.$teams->id_desk.'">'.$teams->team_name.'</option>';
-           
+        $dbn = new DB();
+        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE id_desk=:id', $id);
+        if($sql){
+               foreach ($sql as $teams){
+               $res.='<option  value="'.$teams['id_desk'].'">'.$teams['team_name'].'</option>';
+           }
         }
         return $res;
      }
 
     //Функция получение и вывода списка Sales
+    //Подключаемся к базе данных и делаем выборку значений. Полученный результат записываем в переменную $res
+    //и передаём переменную в seqrch.php
 
          public static function data_users($table, $id)
     {
-        $dbn = new DB();
-        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE team_id='.$id);
         $res='<option  value="" disabled selected>Sales option</option>';
-        while ($users = $sql->fetch_object()){
-            $res.='<option  value="'.$users->user_id.'">'.$users->stage_name.'</option>';
-                     
+        $dbn = new DB();
+        $sql = $dbn->query('SELECT * FROM '.$table. ' WHERE team_id=:id', $id);
+        if($sql){
+               foreach ($sql as $users){
+            $res.='<option  value="'.$users['user_id'].'">'.$users['stage_name'].'</option>';
+           }          
         }
         return $res;
      }
